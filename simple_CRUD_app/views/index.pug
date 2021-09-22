@@ -1,0 +1,54 @@
+doctype html
+
+html(lang="en-US")
+  head
+    title Simple CRUD App
+  body
+    header
+      h1 Simple CRUD App
+      h2 Home
+
+      form(action="/post" method="POST")
+        fieldset 
+          dl 
+            dt 
+              label(for="POST") POST:
+            dd 
+              input(type="text", name="POST" value='Chair') 
+  
+        fieldset 
+        input(type="submit" value="POST")
+
+      form(action="/delete" method="POST")
+        fieldset 
+          dl 
+            dt 
+              label(for="DELETE" value="DELETE") DELETE
+            dd 
+              input(type="text" id="DELETE" value="Chair")
+        fieldset       
+        input(type="submit" value="DELETE")
+        fieldset
+
+      form(action="/get" method="GET")
+        fieldset 
+          dl 
+            dt
+              label(for="GET" value="GET") GET
+            dd
+              input(type="text" id="GET" value="Chair")
+        fieldset
+        input(type="submit" value="GET")
+
+      form(action="/update" method="POST")
+        fieldset 
+              label(for="OldValue" value="Old Value") 
+              input(type="text" name="OldValue" id="OldValue" value="Old Value")
+              label(for="NewValue" value="New Value")
+              input(type="text" id="NewValue" value="New Value")
+              input(type="submit" value="UPDATE")
+        fieldset 
+
+
+
+    
