@@ -22,10 +22,11 @@ app.get('/', function (req, res) {
   res.render('index');   //render a specific pug file
 });
 
-app.get('/get', (req, res) => {
+app.post('/read', (req, res) => {
   try {
     pool.connect(async (error, client, release) => {
-      let resp = await client.query("SELECT * FROM items WHERE name='Chair'");
+      console.log(req.body);
+      let resp = await client.query(`SELECT * FROM items WHERE name='${req.body.GET}'`);
       res.send(resp.rows);
       release()
     })
