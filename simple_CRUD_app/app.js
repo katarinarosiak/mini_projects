@@ -52,7 +52,7 @@ app.post('/update', (req, res) => {
     console.log(req.body.OldValue);
     console.log(req.body);
     pool.connect(async (error, client, release) => {
-      let resp = await client.query(`UPDATE items SET name = '${req.body.OldValue}' WHERE name ='${req.body.NewValue}'`);
+      let resp = await client.query(`UPDATE items SET name = '${req.body.newValue}' WHERE name ='${req.body.OldValue}'`);
       res.redirect("/inventory");
       release();
     })
@@ -65,7 +65,8 @@ app.post('/update', (req, res) => {
 app.post('/delete', (req, res) => {
   try {
     pool.connect(async (error, client, release) => {
-      let resp = await client.query(`DELETE FROM items where name = '${req.body.DELETE}'`);
+      console.log(req.body.DeleteVAl);
+      let resp = await client.query(`DELETE FROM items where name = '${req.body.DeleteVAl}'`);
       res.redirect('/inventory');
       release()
     })
@@ -78,27 +79,14 @@ app.get('/inventory', (req, res) => {
   try {
     pool.connect(async (error, client, release) => {
       let resp = await client.query("SELECT * FROM items");
-      res.send(resp.rows);
+      res.render('inventory', {
+        items: resp.rows
+      })
     })
   } catch (error) {
     console.log(error);
   }
 });
-
-// app.get('/inventory', (req, res) => {
-//   try {
-//     pool.connect(async (error, client, release) => {
-//       let resp = await client.query("SELECT * FROM items");
-//       res.send(resp.rows);
-//       res.render('inventory', {
-//         body: res.rows
-//       })
-//       release()
-//     })
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
 
 app.listen(PORT, (req, res) => {
   console.log(`listening on PORT ${PORT}`);

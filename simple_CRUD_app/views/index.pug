@@ -8,47 +8,61 @@ html(lang="en-US")
       h1 Simple CRUD App
       h2 Home
 
-      form(action="/post" method="POST")
-        fieldset 
-          dl 
-            dt 
-              label(for="POST") POST:
-            dd 
-              input(type="text", name="POST" value='Chair') 
-  
-        fieldset 
-        input(type="submit" value="POST")
 
-      form(action="/delete" method="POST")
-        fieldset 
-          dl 
-            dt 
-              label(for="DELETE" value="DELETE") DELETE
-            dd 
-              input(type="text" id="DELETE" value="Chair")
-        fieldset       
-        input(type="submit" value="DELETE")
-        fieldset
-
+      h2 Find a Value
       form(action="/get" method="GET")
-        fieldset 
-          dl 
-            dt
-              label(for="GET" value="GET") GET
-            dd
-              input(type="text" id="GET" value="Chair")
         fieldset
-        input(type="submit" value="GET")
+          dl
+            dt
+              label(for="GET") Value to find:
+            dd
+              input(type="text" id="GET" name="GET" value=GET)
 
-      form(action="/update" method="POST")
-        fieldset 
-              label(for="OldValue" value="Old Value") 
-              input(type="text" name="OldValue" id="OldValue" value="Old Value")
-              label(for="NewValue" value="New Value")
-              input(type="text" id="NewValue" value="New Value")
-              input(type="submit" value="UPDATE")
-        fieldset 
+        fieldset
+          input(type="submit" value="Save")
 
 
+      h2 Add new Value
+      form(action="/post" method="POST")
+        fieldset
+          dl
+            dt
+              label(for="POST") Value to add:
+            dd
+              input(type="text" id="POST" name="POST" value=POST)
 
-    
+        fieldset
+          input(type="submit" value="Save")
+
+
+      h2 Update value
+      form(action="/update" method="post")
+        fieldset
+          dl
+            dt
+              label(for="OldValue") Old Value:
+            dd
+              input(type="text" id="OldValue" name="OldValue" value=OldValue)
+          dl
+            dt
+              label(for="newValue") New Value:
+            dd
+              input(type="text" id="newValue" name="newValue" value=newValue)
+
+        fieldset
+          input(type="submit" value="Save")
+
+      h2 Delete Value
+      form(action="/delete" method="POST")
+        fieldset
+          dl
+            dt
+              label(for="DeleteVAl") Value to Delete:
+            dd
+              input(type="text" id="DeleteVAl" name="DeleteVAl" value=DeleteVAl)
+
+        fieldset
+          input(type="submit" value="Save")
+
+
+

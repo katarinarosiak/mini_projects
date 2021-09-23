@@ -7,5 +7,14 @@ html(lang="en-US")
     header
       h1 Simple CRUD App
       h2 Inventory
-      //- each row in body 
-      #{body}
+      table
+        thread
+          tr
+            th Id 
+            th Name
+        tbody
+          each row in items
+            tr
+              td #{row.id}
+              td #{row.name}
+        tfoot
